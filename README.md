@@ -12,9 +12,9 @@ go get github.com/upperwal/go-iudx/...
 package main
 
 import (
-	"fmt"
+  "fmt"
 
-	"github.com/upperwal/go-iudx/cat"
+  "github.com/upperwal/go-iudx/cat"
 )
 
 func main() {
