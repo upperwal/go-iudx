@@ -18,26 +18,26 @@ import (
 )
 
 func main() {
-	cc, err := cat.NewCatalogueClient()
-	if err != nil {
-		panic(err)
-	}
+  cc, err := cat.NewCatalogueClient()
+  if err != nil {
+    panic(err)
+  }
 
-	attrQ := cat.NewQueryAttribute()
-	attrQ.Append("tags", []string{"aqm"})
+  attrQ := cat.NewQueryAttribute()
+  attrQ.Append("tags", []string{"aqm"})
 
-	filterQ := cat.NewQueryFilter()
-	filterQ.Append("id")
+  filterQ := cat.NewQueryFilter()
+  filterQ.Append("id")
 
-	cat, err := cc.Search(attrQ, filterQ)
-	if err != nil {
-		panic(err)
-	}
+  cat, err := cc.Search(attrQ, filterQ)
+  if err != nil {
+    panic(err)
+  }
 
-	resCh := cat.Latest()
+  resCh := cat.Latest()
 
-	for res := range resCh {
-		fmt.Println(res)
-	}
+  for res := range resCh {
+    fmt.Println(res)
+  }
 }
 ```
