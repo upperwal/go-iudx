@@ -13,7 +13,7 @@ func main() {
 	}
 
 	attrQ := cat.NewQueryAttribute()
-	attrQ.Append("tags", []string{"aqm"})
+	attrQ.Append("tags", "aqm")
 
 	filterQ := cat.NewQueryFilter()
 	filterQ.Append("id")

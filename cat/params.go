@@ -14,7 +14,7 @@ func NewQueryAttribute() *QueryAttribute {
 	return &QueryAttribute{}
 }
 
-func (qa *QueryAttribute) Append(name string, value []string) {
+func (qa *QueryAttribute) Append(name string, value ...string) {
 	qa.name = append(qa.name, name)
 	qa.value = append(qa.value, value...)
 }
