@@ -18,12 +18,14 @@ func main() {
 	filterQ := cat.NewQueryFilter()
 	filterQ.Append("id")
 
-	cat, err := cc.Search(attrQ, filterQ)
+	circleQ := cat.NewQueryCircleSearch(18.539107, 73.903987, 1000)
+
+	items, err := cc.Search(attrQ, filterQ, circleQ)
 	if err != nil {
 		panic(err)
 	}
 
-	resCh := cat.Latest()
+	resCh := items.Latest()
 
 	for res := range resCh {
 		fmt.Println(res)

@@ -1,6 +1,7 @@
 package cat
 
 import (
+	"fmt"
 	"strings"
 )
 
@@ -49,4 +50,26 @@ func (qf *QueryFilter) Params() []string {
 	attr := "attribute-filter=(" + strings.Join(qf.attributes[:], ",") + ")"
 
 	return []string{attr}
+}
+
+type QueryCircleSearch struct {
+	lat    float32
+	lon    float32
+	radius uint
+}
+
+func NewQueryCircleSearch(lat, lon float32, radius uint) *QueryCircleSearch {
+	return &QueryCircleSearch{
+		lat:    lat,
+		lon:    lon,
+		radius: radius,
+	}
+}
+
+func (qcs *QueryCircleSearch) Params() []string {
+	return []string{
+		"lat=" + fmt.Sprintf("%f", qcs.lat),
+		"lon=" + fmt.Sprintf("%f", qcs.lon),
+		"radius=" + fmt.Sprintf("%d", qcs.radius),
+	}
 }
