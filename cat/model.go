@@ -11,8 +11,11 @@ type CatalogueItems struct {
 type Catalogue []CatalogueItems
 
 func (c Catalogue) Latest() chan string {
-	ids := make([]string, len(c))
+	ids := make([]string, 0, len(c))
 	for _, ct := range c {
+		if ct.ID == "" {
+			continue
+		}
 		ids = append(ids, ct.ID)
 	}
 
