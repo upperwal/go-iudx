@@ -30,7 +30,7 @@ func main() {
   // Eg: you can use "tags" attribute with values like "aqm", "air quality", "buses" etc 
   // This will only look for items with these tags value
   attrQ := cat.NewQueryAttribute()
-  attrQ.Append("tags", []string{"aqm"})
+  attrQ.Append("tags", "aqm")
 
   // This is a filter on the output.
   // Filtering with "id" will return all items with only "id" object. 
