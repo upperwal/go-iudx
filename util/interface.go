@@ -1,5 +1,5 @@
 package util
 
 type Query interface {
-	String() string
+	Params() []string
 }

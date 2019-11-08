@@ -18,15 +18,15 @@ func (qa *QueryAttribute) Append(name string, value []string) {
 	qa.value = append(qa.value, value...)
 }
 
-func (qa *QueryAttribute) String() string {
+func (qa *QueryAttribute) Params() []string {
 	if len(qa.name) == 0 {
-		return ""
+		return nil
 	}
 
 	name := "attribute-name=(" + strings.Join(qa.name[:], ",") + ")"
 	value := "attribute-value=(" + strings.Join(qa.value[:], ",") + ")"
 
-	return name + "&" + value
+	return []string{name, value}
 }
 
 type QueryFilter struct {
@@ -41,12 +41,12 @@ func (qf *QueryFilter) Append(attributes string) {
 	qf.attributes = append(qf.attributes, attributes)
 }
 
-func (qf *QueryFilter) String() string {
+func (qf *QueryFilter) Params() []string {
 	if len(qf.attributes) == 0 {
-		return ""
+		return nil
 	}
 
 	attr := "attribute-filter=(" + strings.Join(qf.attributes[:], ",") + ")"
 
-	return attr
+	return []string{attr}
 }

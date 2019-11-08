@@ -39,8 +39,10 @@ func (rs *ResourceServerClient) Search(ids []string, q ...util.Query) chan strin
 				"id": id,
 			}
 			for _, qry := range q {
-				keyVal := strings.Split(qry.String(), ":")
-				opts[keyVal[0]] = keyVal[1]
+				for _, p := range qry.Params() {
+					keyVal := strings.Split(p, ":")
+					opts[keyVal[0]] = keyVal[1]
+				}
 			}
 			data, err := rs.post("search", opts)
 			if err != nil {

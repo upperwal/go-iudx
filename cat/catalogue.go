@@ -29,7 +29,9 @@ func NewCatalogueClient() (*CatalogueClient, error) {
 func (c *CatalogueClient) Search(q ...util.Query) (Catalogue, error) {
 	queryString := ""
 	for _, qry := range q {
-		queryString += qry.String() + "&"
+		for _, p := range qry.Params() {
+			queryString += p + "&"
+		}
 	}
 	data, err := c.get("search", queryString)
 	if err != nil {

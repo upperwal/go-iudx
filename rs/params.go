@@ -6,6 +6,6 @@ func NewQueryLatest() *QueryLatest {
 	return new(QueryLatest)
 }
 
-func (ql QueryLatest) String() string {
-	return "options:latest"
+func (ql QueryLatest) Params() []string {
+	return []string{"options:latest"}
 }
